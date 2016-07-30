@@ -32,7 +32,8 @@ mvn clean install -Dtestng-xml=testng-xml/bothTest.xml
    
 By Default the test cases will be executed on "chrome" and make sure that the chrome-driver is placed in the environment variable $PATH, but support is also provided to run it on "firefox". For that edit the src/main/resources/test.properties file for property `browser.type=firefox`
    
-After execution, a test output report is created in the test-output folder with name as  Automated_Report_${<date_time>}.html using EXTENT Report Tool. A sample report is attached and should be open in a browser after download.
+After execution, a test output report is created in the test-output folder with name as  Automated_Report_${<date_time>}.html using EXTENT Report Tool. A sample report is attached;
+![alt tag](http://url/to/img.png)
 
 # Environment needs:
 Need Maven and java 8 configured on the system where the maven goals are executed.  
