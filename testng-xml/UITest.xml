@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="test">
+
+	<test name="uitests">
+		<classes>
+			<class name="com.qa.demo.ui.EmptyCartTest" />
+			<class name="com.qa.demo.ui.SubmitOrderTest" /> 
+		</classes>
+	</test>
+
+	<listeners>
+		<listener class-name="com.qa.demo.utils.reporting.ReportListener" />
+		<listener class-name="com.qa.demo.utils.reporting.ExtentReporter" />
+	</listeners>
+
+</suite>  	
