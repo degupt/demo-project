@@ -41,7 +41,7 @@ public class CartPage extends PageObjects {
      */
     public InfoPage checkoutCart() {
         click(continueCheckoutButton);
-        return new InfoPage(driver);
+        return new InfoPage(getDriver());
     }
 
     /**
@@ -51,7 +51,7 @@ public class CartPage extends PageObjects {
      */
     public CartPage removeItemFromCart() {
         click(removeButton);
-        return new CartPage(driver);
+        return new CartPage(getDriver());
     }
 
     /**

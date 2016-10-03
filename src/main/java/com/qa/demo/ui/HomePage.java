@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.demo.utils.reporting.Log;
 import com.qa.demo.utils.ui.PageObjects;
 
 /**
@@ -48,7 +49,7 @@ public class HomePage extends PageObjects {
      * @return
      */
     public HomePage openURL(String url) {
-        driver.navigate().to(url);
+        getDriver().navigate().to(url);
         return this;
     }
 
@@ -59,12 +60,12 @@ public class HomePage extends PageObjects {
      * @throws InterruptedException
      */
     public CartPage addToCart() throws InterruptedException {
-        mouseOver(productCategoryButton);
+        hoverMouseOver(productCategoryButton);
         click(iphoneCategoryButton);
         click(addBlackIphoneButton);
-        Thread.sleep(2000);
+        waitForPageToLoad(3);
         click(checkoutButton);
-        return new CartPage(driver);
+        return new CartPage(getDriver());
     }
 
     /**
@@ -74,7 +75,7 @@ public class HomePage extends PageObjects {
      */
     public LoginPage goToMyAccount() {
         click(myAccountButton);
-        return new LoginPage(driver);
+        return new LoginPage(getDriver());
     }
 
 }

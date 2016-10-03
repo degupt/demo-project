@@ -23,12 +23,13 @@ public class APIHelper {
      */
     public static ClientResponse getResponseNoHeader(String apiEndPoint) {
         try {
+            Log.info("Creating client response for endPoint: " + apiEndPoint);
             Client client = Client.create();
             WebResource webResource = client.resource(apiEndPoint);
             return webResource.get(ClientResponse.class);
         } catch (Exception e) {
-            Log.info("unable to get API Response", e);
-            throw new APIException("unable to get API Response", e);
+            Log.error("Unable to get API Response for " + apiEndPoint, e);
+            throw new APIException("Unable to get API Response for " + apiEndPoint, e);
         }
     }
 

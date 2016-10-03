@@ -15,10 +15,6 @@ public class Log {
         // no-op
     }
 
-    private static Logger getLogger() {
-        return LOGGER;
-    }
-
     private static String getCallingMethod(int callStackDepth) {
         String className = Thread.currentThread().getStackTrace()[callStackDepth].getClassName();
         String methodName = Thread.currentThread().getStackTrace()[callStackDepth].getMethodName();
@@ -32,8 +28,8 @@ public class Log {
      * @param t
      */
     public static void info(String message, Throwable t) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message, t);
-    }
+        LOGGER.info("[" + getCallingMethod(3) + "] " + message, t);
+     }
 
     /**
      * This method writes error messages in the log arguments are custom message and the throwable exception
@@ -42,7 +38,7 @@ public class Log {
      * @param t
      */
     public static void error(String message, Throwable t) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message, t);
+        LOGGER.error("[" + getCallingMethod(3) + "] " + message, t);
     }
 
     /**
@@ -52,7 +48,7 @@ public class Log {
      * @param t
      */
     public static void warn(String message, Throwable t) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message, t);
+        LOGGER.warn("[" + getCallingMethod(3) + "] " + message, t);
     }
 
     /**
@@ -62,7 +58,7 @@ public class Log {
      * @param t
      */
     public static void debug(String message, Throwable t) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message, t);
+        LOGGER.debug("[" + getCallingMethod(3) + "] " + message, t);
     }
 
     /**
@@ -71,7 +67,7 @@ public class Log {
      * @param message
      */
     public static void info(String message) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message);
+        LOGGER.info("[" + getCallingMethod(3) + "] " + message);
     }
 
     /**
@@ -80,7 +76,7 @@ public class Log {
      * @param message
      */
     public static void error(String message) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message);
+        LOGGER.error("[" + getCallingMethod(3) + "] " + message);
     }
 
     /**
@@ -89,7 +85,7 @@ public class Log {
      * @param message
      */
     public static void warn(String message) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message);
+        LOGGER.warn("[" + getCallingMethod(3) + "] " + message);
     }
 
     /**
@@ -98,7 +94,7 @@ public class Log {
      * @param message
      */
     public static void debug(String message) {
-        getLogger().info("[" + getCallingMethod(3) + "] " + message);
+        LOGGER.debug("[" + getCallingMethod(3) + "] " + message);
     }
 
 }
