@@ -83,7 +83,7 @@ public class InfoPage extends PageObjects {
      * @return Confirmation Page object   
      */
     public ConfirmationPage submitOrder() {
-        Log.info("Title" + driver.getTitle());
+        Log.info("Title" + getDriver().getTitle());
         selectByText(shipCountryDropdown, "USA");
         click(calculateShippingCostButton);
         inputText(emailInputBox, "gupta.deenesh@gmail.com");
@@ -97,7 +97,7 @@ public class InfoPage extends PageObjects {
         inputText(phoneInputBox, "8133333333");
         click(shipAddressInputBox);
         click(submitOrderButton);
-        return new ConfirmationPage(driver);
+        return new ConfirmationPage(getDriver());
     }
 
 }

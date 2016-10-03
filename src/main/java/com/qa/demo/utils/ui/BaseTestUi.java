@@ -29,12 +29,12 @@ public class BaseTestUi {
     @BeforeMethod(alwaysRun = true)
     public void initBrowser(ITestContext context) {
         Log.info("inside before method");
-        String url = Config.getProperty("url");
-        String browserType = Config.getProperty("browser.type");
+        String url = Config.getConfigProperty("url");
+        String browserType = Config.getConfigProperty("browser.type");
         softAssert = new SoftAssert();
         context.setAttribute("url", url);
         context.setAttribute("BrowserType", browserType);
-        browser = new Browser(browserType);
+        browser = new Browser(browserType, "");
         homePage = new HomePage(browser.getWebDriver()).openURL(url);
     }
 

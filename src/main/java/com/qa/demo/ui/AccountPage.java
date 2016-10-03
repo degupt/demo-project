@@ -75,19 +75,19 @@ public class AccountPage extends PageObjects {
     public AccountPage openContactInfo() {
         Log.info("Clicking Contact details");
         click(yourAccountDetailLink);
-        return new AccountPage(driver);
+        return new AccountPage(getDriver());
     }
 
     public String getFirstName() {
-        return getInputText(firstNameInputBox);
+        return getText(firstNameInputBox);
     }
 
     public String getLastName() {
-        return getInputText(lastNameInputBox);
+        return getText(lastNameInputBox);
     }
 
     public String getAddress() {
-        return getInputText(addressInputBox);
+        return getText(addressInputBox);
     }
 
     /**
@@ -97,7 +97,7 @@ public class AccountPage extends PageObjects {
      */
     public LoginPage logout() {
         click(logOutLink);
-        return new LoginPage(driver);
+        return new LoginPage(getDriver());
     }
 
 }

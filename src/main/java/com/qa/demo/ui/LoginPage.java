@@ -45,7 +45,7 @@ public class LoginPage extends PageObjects {
         inputText(usernameInputBox, username);
         inputText(passwordInputBox, password);
         click(loginButton);
-        return new AccountPage(driver);
+        return new AccountPage(getDriver());
     }
 
 }

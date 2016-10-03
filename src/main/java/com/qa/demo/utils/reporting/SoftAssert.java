@@ -43,12 +43,17 @@ public class SoftAssert extends Assertion {
         printAssertionLog(assertCommand, null, false);
 
         // Test Method Name is the 6th element in StackTrace Array
-        Log.info(Thread.currentThread().getStackTrace()[5].getMethodName() + Thread.currentThread().getId());
         ExtentTest test = ReportListener.extentTestMap
                 .get(Thread.currentThread().getStackTrace()[5].getMethodName() + Thread.currentThread().getId());
         reportListener.setAssertStatus(test, false, assertCommand.getMessage());
     }
 
+    /**
+     * Method to print in the report at times of failure.
+     * 
+     * @param assertCommand
+     * @param ex
+     */
     public void onAssertFailure(IAssert assertCommand, AssertionError ex) {
         printAssertionLog(assertCommand, ex, true);
 
@@ -99,7 +104,8 @@ public class SoftAssert extends Assertion {
         if (isfailed) {
             Reporter.getCurrentTestResult().setThrowable(ex);
         }
-        Reporter.log(sb.toString(), true);
+        Reporter.log(sb.toString());
+        Log.info(sb.toString());
     }
 
     private String convertStackTrace(AssertionError error) {

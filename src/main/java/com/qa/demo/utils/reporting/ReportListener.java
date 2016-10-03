@@ -102,14 +102,14 @@ public class ReportListener extends TestListenerAdapter {
      * where first part is the description and second part is more details.
      * 
      * @param test
-     * @param status
+     * @param isFailed
      * @param message
      */
-    public void setAssertStatus(ExtentTest test, Boolean status, String message) {
+    public void setAssertStatus(ExtentTest test, Boolean isFailed, String message) {
         String[] messages = message.split(";");
         String stepdesc = messages[0];
         String details = messages[1];
-        if (status) {
+        if (isFailed) {
             test.log(LogStatus.FAIL, stepdesc, details);
         } else
             test.log(LogStatus.PASS, stepdesc, details);
