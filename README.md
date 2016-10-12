@@ -1,6 +1,6 @@
 # demo-project
 
-This Project has the Tests for API and UI automation. 
+This project has custom utilities to make rest webservices requests, browser initialization and webElements interactions, initialize configurations, create data provider objects, reporting and logging capabilities using Selenium webdriver 2.0, Java, TestNG, Jersey and Jackson libraries. Some Test cases are added to demonstrate the functionalities. 
 
 Steps to Run the Project
 
