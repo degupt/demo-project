@@ -11,19 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author deenesh
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NearestStationResponse {
+public class NearestStationsBean {
 
     @JsonProperty(value = "fuel_stations")
-    private List<StationDetails> details;
+    private List<StationDetailsBean> details;
 
     /**
      * @return list of stations
      */
-    public List<StationDetails> getDetails() {
+    public List<StationDetailsBean> getDetails() {
         return details;
     }
 
-    public void setDetails(List<StationDetails> details) {
+    public void setDetails(List<StationDetailsBean> details) {
         this.details = details;
     }
 

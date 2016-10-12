@@ -16,7 +16,7 @@ import com.sun.jersey.api.client.ClientResponse;
  */
 public class JsonResponseMapper {
     private ClientResponse response;
-    private NearestStationResponse responseBean;
+    private NearestStationsBean responseBean;
     private StationIdResponse idResponseBean;
 
     /**
@@ -40,13 +40,13 @@ public class JsonResponseMapper {
      *                custom exception if the response fails to be parsed. Exception is logged in the test output
      *                report.
      */
-    public List<StationDetails> getNearestStations() {
-        List<StationDetails> details = new ArrayList<>();
+    public List<StationDetailsBean> getNearestStationsList() {
+        List<StationDetailsBean> details = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
 
+        // create the response bean object for NearestStationResponse class
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            // create the response bean object for NearestStationResponse class
-            responseBean = objectMapper.readValue(response.getEntity(String.class), NearestStationResponse.class);
+           responseBean = objectMapper.readValue(response.getEntity(String.class), NearestStationsBean.class);
             details = responseBean.getDetails();
         } catch (Exception e) {
             Log.info("unable to MAP JSON Object", e);
@@ -63,19 +63,18 @@ public class JsonResponseMapper {
      *                custom exception if the response fails to be parsed. Exception is logged in the test output
      *                report.
      */
-    public StationDetails getStationDetails() {
-        StationDetails stationDetails;
-
+    public StationDetailsBean getStationDetails() {
+        StationDetailsBean stationDetails;
+        ObjectMapper objectMapper = new ObjectMapper();
+        
+        // create the response bean object for station ids.
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            // create the response bean object for station ids.
             idResponseBean = objectMapper.readValue(response.getEntity(String.class), StationIdResponse.class);
             stationDetails = idResponseBean.getDetails();
         } catch (Exception e) {
             Log.info("unable to MAP JSON Object", e);
             throw new APIException("unable to MAP Json object", e);
         }
-
         return stationDetails;
     }
 
