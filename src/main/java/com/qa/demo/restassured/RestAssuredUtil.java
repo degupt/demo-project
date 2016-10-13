@@ -44,9 +44,4 @@ public class RestAssuredUtil {
         return webResource;
     }
 
-   public static void pure(){
-       Response res = getResponseNoHeader("/json_path", Response.class);
-   }
-
-
 }
