@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StationIdResponse {
 
     @JsonProperty(value = "alt_fuel_station")
-    private StationDetails details;
+    private StationDetailsBean details;
 
-    public StationDetails getDetails() {
+    public StationDetailsBean getDetails() {
         return details;
     }
 
-    public void setDetails(StationDetails details) {
+    public void setDetails(StationDetailsBean details) {
         this.details = details;
     }
 

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author deenesh
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StationDetails {
+public class StationDetailsBean {
 
     @JsonProperty("station_name")
     private String stationName;
