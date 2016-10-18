@@ -87,7 +87,7 @@ public class APIHelper {
             Builder builder = webResource.getRequestBuilder();
             setHeaders(builder, headers);
             response = callWebservice(verb, builder, requestContent);
-            Log.info("API Response: " + response.getStatus());
+            Log.info("API Response Status: " + response.getStatus());
             return response;
         } catch (Exception e) {
             Log.error("Client Handler exception, unable to get web Service response " + e.getCause());
