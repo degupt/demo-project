@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.testng.Reporter;
 
 import com.qa.demo.utils.reporting.Log;
 
 /**
- * Class to initialize the properties. Default properties are defined in the {enum} which can be overwritten via system
+ * Class to initialize the properties. Default properties are defined in the {@link enum} which can be overwritten via system
  * properties or test.propetries file
  * 
  * @author deenesh
@@ -34,7 +35,7 @@ public class Config {
         Properties prop = new Properties();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String fileName = classLoader.getResource(DEFAULTFILE).getPath();
-        Log.info("file"+ fileName);
+        Log.info("file" + fileName);
         try (InputStream input = new FileInputStream(fileName)) {
             prop.load(input);
         } catch (IOException ex) {
@@ -66,15 +67,17 @@ public class Config {
 
         // Load the test properties values if found.
         if (!userConfig.isEmpty()) {
-            for (Object key : userConfig.keySet()) {
-                configProperties.put(key, userConfig.get(key));
+            for (Map.Entry<Object, Object> entry : userConfig.entrySet()) {
+                configProperties.put(entry.getKey(), entry.getValue());
             }
         }
+
+        configProperties = getAllProperties();
 
         // Load in environment variables (if defined)
         for (int i = 0; i < configProps.length; i++) {
             String value = System.getenv(OVERRIDE_PREFIX + configProps[i].getPropName());
-            if (value != null) {
+            if (!StringUtils.isBlank(value)) {
                 configProperties.put(configProps[i].getPropName(), value);
             }
         }
@@ -82,7 +85,7 @@ public class Config {
         // Load in System properties variables (if defined)
         for (int i = 0; i < configProps.length; i++) {
             String value = System.getProperty(OVERRIDE_PREFIX + configProps[i].getPropName());
-            if (value != null) {
+            if (!StringUtils.isBlank(value)) {
                 configProperties.put(configProps[i].getPropName(), value);
             }
         }
@@ -135,9 +138,9 @@ public class Config {
         USER_NAME("user.name", "deenesh.gupta"),
         PASSWORD("password", "testAssess12!"),
         NEAREST_STATION_API("nearest.station.endpoint",
-                "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=GNMVTYOYe6CaqnioSATXZPYd6t2nT7riRpE6ypwu&ev_network=ChargePoint%20Network&location=Austin,%20TX"),
+                "https://developer.nrel./api/alt-fuel-stations/v1/nearest.json?api_key=GNMVTYOYe6CaqnioSATXZPYd6t2nT7riRpE6ypwu&ev_network=ChargePoint%20Network&location=Austin,%20TX"),
         STATION_API("station.endpoint",
-                "https://developer.nrel.gov/api/alt-fuel-stations/v1/STATION_ID.json?api_key=GNMVTYOYe6CaqnioSATXZPYd6t2nT7riRpE6ypwu"),;
+                "https://developer.nrel./api/alt-fuel-stations/v1/STATION_ID.json?api_key=GNMVTYOYe6CaqnioSATXZPYd6t2nT7riRpE6ypwu"),;
 
         private String propName = null;
         private String propDefaultValue = null;

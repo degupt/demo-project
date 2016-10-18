@@ -28,9 +28,9 @@ public class ApiTest {
     public void nearestStationTest() {
         boolean isStationExists = false;
         String endPoint = Config.getConfigProperty("nearest.station.endpoint");
-        JsonResponseMapper js = new JsonResponseMapper(endPoint);
-        List<StationDetailsBean> stationsDetails = js.getNearestStationsList();
-        Log.debug("Status " + Integer.toString(js.getResonse().getStatus()));
+        JsonResponseMapper mapper = new JsonResponseMapper(endPoint);
+        List<StationDetailsBean> stationsDetails = mapper.getNearestStationsList();
+        Log.debug("Status " + Integer.toString(mapper.getResonse().getStatus()));
 
         for (StationDetailsBean details : stationsDetails) {
             Log.debug(details.toString());
@@ -40,7 +40,7 @@ public class ApiTest {
                 break;
             }
         }
-        softAssert.assertEquals(js.getResonse().getStatus(), 200, VALIDATEMESSAGE);
+        softAssert.assertEquals(mapper.getResonse().getStatus(), 200, VALIDATEMESSAGE);
         softAssert.assertTrue(isStationExists,
                 "Station Exists Test;The Station Name should exist in the response with stationId: " + stationId);
         softAssert.assertAll();
@@ -56,9 +56,9 @@ public class ApiTest {
     public void validatestationAddressTest() {
         String endPoint = Config.getConfigProperty("station.endpoint");
         String endP = endPoint.replace("STATION_ID", stationId);
-        JsonResponseMapper js = new JsonResponseMapper(endP);
-        softAssert.assertEquals(js.getResonse().getStatus(), 200, VALIDATEMESSAGE);
-        StationDetailsBean stationsDetails = js.getStationDetails();
+        JsonResponseMapper mapper = new JsonResponseMapper(endP);
+        softAssert.assertEquals(mapper.getResonse().getStatus(), 200, VALIDATEMESSAGE);
+        StationDetailsBean stationsDetails = mapper.getStationDetails();
         StringBuffer sb = new StringBuffer();
         Log.info("station address: " + sb.append(stationsDetails.getStreetAddress()).append(", ")
                 .append(stationsDetails.getCity()).append(", ").append(stationsDetails.getState()).append(", ")
